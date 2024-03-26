@@ -22,8 +22,11 @@ FROM nginx:alpine
 # Copy the build output from the builder stage to the nginx public directory
 COPY --from=builder /app/build /usr/share/nginx/html
 
+#Run storybook
+RUN npm run storybook
+
 # Expose port 80 to the outside world
-EXPOSE 80
+EXPOSE 8018
 
 # Command to run the nginx server
 CMD ["nginx", "-g", "daemon off;"]
